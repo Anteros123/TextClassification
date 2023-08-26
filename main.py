@@ -55,21 +55,6 @@ history = model.fit(train_data,
 
 model.evaluate(test_data)
 
-sentences_to_predict = []
-
-tokenized_input = tokenizer(sentences_to_predict, padding=True, truncation=True, return_tensors="tf")
-
-predictions = model.predict({
-    'input_ids': tokenized_input['input_ids'],
-    'attention_mask': tokenized_input['attention_mask']
-})
-
-predicted_labels = ["positive" if pred >= 0.5 else "negative" for pred in predictions]
-
-for sentence, label in zip(sentences_to_predict, predicted_labels):
-    print(f"Sentence: {sentence}")
-    print(f"Predicted Label: {label}")
-    print()
 
 
 
